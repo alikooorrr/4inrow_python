@@ -58,9 +58,16 @@ class Joueur:
                 validite, message = grille.valider_coup(coup)
             grille.jouer_coup(coup, self.couleur)
         else:
-            coup = random.randint(0,6)
-            print("Quelle est la colonne ou vous désirez jouer? ",coup)
+            coup = random.randint(0, 6)
+            print("Quelle est la colonne ou vous désirez jouer? ", coup)
+            validite, message = grille.valider_coup(coup)
+            while validite != True:
+                print(message)
+                coup = random.randint(0, 6)
+                print("Quelle est la colonne ou vous désirer jouer? ", coup)
+                validite, message = grille.valider_coup(coup)
             grille.jouer_coup(coup, self.couleur)
+
 class JoueurHumain(Joueur):
     '''
     Classe modélisant un joueur humain.
